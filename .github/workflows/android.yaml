@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - master
+      - test
   
 jobs:
 
@@ -39,3 +40,9 @@ jobs:
         flutter pub get
         cp lib/dummy_dsn.dart lib/dsn.dart
         flutter build apk --debug
+    - name: Archive apk artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: apks
+        path: "**/*.apk"
+
